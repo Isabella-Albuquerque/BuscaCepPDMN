@@ -1,11 +1,11 @@
-import React from 'react';
-import { Card } from 'primereact/card';
+import React from 'react'
+import { Card } from 'primereact/card'
 
 const LocalidadeLista = ({ cep }) => {
   const localPorCEP = {
     '04094050': { nome: 'Avenida Pedro Álvares Cabral', bairro: 'Parque Ibirapuera', cidade: 'São Paulo', estado: 'SP', cep: '04094-050' },
     '55592970': { nome: 'Rua dos Navegantes', bairro: 'Vila de Porto de Galinhas', cidade: 'Ipojuca', estado: 'PE', cep: '55592-970' },
-    '': {}, // para input vazio 
+    '': {}, 
   };
 
   const infoLocal = localPorCEP[cep]
@@ -21,6 +21,6 @@ const LocalidadeLista = ({ cep }) => {
         </p>
       </Card>
     </div>
-  );
-};
+  )
+}
 export default LocalidadeLista
