@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import Busca from './Busca'
 import axios from 'axios'
 import LocalidadeLista from './LocalidadeLista'
+import Grafico from './Grafico'
 
 class App extends Component {
 
   state = {
     termoDeBusca: '',
-    localidade: []
+    consultas: []
   }
 
   buscarLocalidade = (cep) => {
@@ -15,7 +16,6 @@ class App extends Component {
   }
 
   onBuscarClick = (cep) => {
-
     if (cep === '') {
       alert('Busca vazia. Insira um CEP.')
       return
@@ -25,7 +25,7 @@ class App extends Component {
       alert('Insira um CEP com 8 dígitos.')
       return
     }
-   
+
     axios.get(`https://viacep.com.br/ws/${cep}/json/`)
       .then((response) => {
         const objetoRetorno = response.data
@@ -35,8 +35,8 @@ class App extends Component {
           return
         }
         this.setState((state) => ({
-          localidade: [objetoRetorno].concat(state.localidade)
-        })) 
+          consultas: [objetoRetorno].concat(state.consultas)
+        }))
       })
       .catch((error) => {
         console.error(error)
@@ -46,7 +46,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="grid justify-content-center">
+      <div className="grid justify-content-center p-2">
         <div className="col-12">
           <h1 className="text-center">Buscador de CEPs</h1>
         </div>
@@ -56,10 +56,17 @@ class App extends Component {
             onBuscarClick={this.onBuscarClick} />
         </div>
         <div className="col-12">
-          <LocalidadeLista localidade={this.state.localidade} />
+          <div className="grid">
+            <div className="col-6">
+              <LocalidadeLista consultas={this.state.consultas} />
+            </div>
+            <div className="col-6">
+              <Grafico consultas={this.state.consultas} />
+            </div>
+          </div>
         </div>
       </div>
-    );
+    )
   }
 }
 

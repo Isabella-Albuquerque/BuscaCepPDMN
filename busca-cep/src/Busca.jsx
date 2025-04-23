@@ -17,6 +17,7 @@ class Busca extends Component {
   onFormSubmit = (event) => {
     event.preventDefault()  
     this.props.onBuscarClick(this.state.termoDeBusca)
+    this.setState({ termoDeBusca: '' }) 
 } 
 
   render() {
