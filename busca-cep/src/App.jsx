@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Busca from './Busca'
+import Busca from './components/Busca'
 import axios from 'axios'
-import LocalidadeLista from './LocalidadeLista'
-import Grafico from './Grafico'
+import LocalidadeLista from './components/LocalidadeLista'
+import Grafico from './components/Grafico'
 
 class App extends Component {
 

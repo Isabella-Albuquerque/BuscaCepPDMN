@@ -1,12 +1,12 @@
-import React from 'react';
-import { Chart } from 'primereact/chart';
+import React from 'react'
+import { Chart } from 'primereact/chart'
 
 const Grafico = ({ consultas }) => {
-    const contagem = {};
+    const contagem = {}
 
     for (let i = 0; i < consultas.length; i++) {
-        const estado = consultas[i].uf;
-        contagem[estado] = contagem[estado] ? contagem[estado] + 1 : 1;
+        const estado = consultas[i].uf
+        contagem[estado] = contagem[estado] ? contagem[estado] + 1 : 1
     }
 
     const data = {
@@ -36,4 +36,4 @@ const Grafico = ({ consultas }) => {
     )
 }
 
-export default Grafico;
+export default Grafico
